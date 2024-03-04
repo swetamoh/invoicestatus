@@ -1,0 +1,137 @@
+_schema-version: "3.1"
+ID: invoicestatus
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: invoicestatus-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: invoicestatus-db
+  - name: uaa_invoicestatus
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm
+- name: invoicestatus-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: invoicestatus-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: invoicestatus-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: invoicestatus-destination-service
+    parameters:
+      content-target: true
+  - name: invoicestatus_html_repo_host
+    parameters:
+      service-key:
+        name: invoicestatus_html_repo_host-key
+  - name: uaa_invoicestatus
+    parameters:
+      service-key:
+        name: uaa_invoicestatus-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: invoicestatus_invoicestatus_html_repo_host
+          ServiceInstanceName: invoicestatus-html5-app-host-service
+          ServiceKeyName: invoicestatus_html_repo_host-key
+          sap.cloud.service: invoicestatus
+        - Authentication: OAuth2UserTokenExchange
+          Name: invoicestatus_uaa_invoicestatus
+          ServiceInstanceName: invoicestatus-xsuaa-service
+          ServiceKeyName: uaa_invoicestatus-key
+          sap.cloud.service: invoicestatus
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: invoicestatus-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: invoicestatus_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - spfioriinvoicestatus.zip
+      name: spfioriinvoicestatus
+      target-path: resources/
+- name: spfioriinvoicestatus
+  type: html5
+  path: app/invoicestatus
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: invoicestatus-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: invoicestatus-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: invoicestatus-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: invoicestatus-destination-service
+    service-plan: lite
+  requires:
+  - name: srv-api
+- name: invoicestatus_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: invoicestatus-html5-app-host-service
+    service-plan: app-host
+- name: uaa_invoicestatus
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: invoicestatus-${org}-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: invoicestatus-xsuaa-service
+    service-plan: application
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npx cds build --production
