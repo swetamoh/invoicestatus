@@ -184,31 +184,31 @@ sap.ui.define([
 		});
 		},
 
-		onItempress: function (oEvent) {
-			var data = oEvent.getParameter("listItem").getBindingContext("DataModel").getProperty();
-			//this.detailModel.setData(data);
-			this.PoNum = data.PONumber.replace(/\//g, '-');
-			this.MRNnumber = data.MRNNumber.replace(/\//g, '-');
-			this.SendToAccDate = data.SendToAccDate.replace(/\//g, '-');
-			this.ReceiptDate = data.ReceiptDate.replace(/\//g, '-');
-			this.VoucherNumber = data.VoucherNumber.replace(/\//g, '-');
-			this.router.navTo("ASNReportDetail", {
-				"UnitCode": data.PlantCode,
-				"PoNum": this.PoNum,
-				"MRNnumber": this.MRNnumber,
-				"AddressCode": data.VendorCode,
-				"SendToAccDate": this.SendToAccDate,
-				"TillDatePurchaseVal": data.TillDatePurchaseVal,
-				"DedTds": data.DedTds,
-				"TotalDebit": data.TotalDebit,
-				"TotalCredit": data.TotalCredit,
-				"VoucherType": data.VoucherType,
-				"AccCode": data.AccCode,
-				"AccDesc": data.AccDesc,
-				"ReceiptDate": this.ReceiptDate,
-				"VoucherNumber": this.VoucherNumber
-			});
-		},
+		// onItempress: function (oEvent) {
+		// 	var data = oEvent.getParameter("listItem").getBindingContext("DataModel").getProperty();
+		// 	//this.detailModel.setData(data);
+		// 	this.PoNum = data.PONumber.replace(/\//g, '-');
+		// 	this.MRNnumber = data.MRNNumber.replace(/\//g, '-');
+		// 	this.SendToAccDate = data.SendToAccDate.replace(/\//g, '-');
+		// 	this.ReceiptDate = data.ReceiptDate.replace(/\//g, '-');
+		// 	this.VoucherNumber = data.VoucherNumber.replace(/\//g, '-');
+		// 	this.router.navTo("ASNReportDetail", {
+		// 		"UnitCode": data.PlantCode,
+		// 		"PoNum": this.PoNum,
+		// 		"MRNnumber": this.MRNnumber,
+		// 		"AddressCode": data.VendorCode,
+		// 		"SendToAccDate": this.SendToAccDate,
+		// 		"TillDatePurchaseVal": data.TillDatePurchaseVal,
+		// 		"DedTds": data.DedTds,
+		// 		"TotalDebit": data.TotalDebit,
+		// 		"TotalCredit": data.TotalCredit,
+		// 		"VoucherType": data.VoucherType,
+		// 		"AccCode": data.AccCode,
+		// 		"AccDesc": data.AccDesc,
+		// 		"ReceiptDate": this.ReceiptDate,
+		// 		"VoucherNumber": this.VoucherNumber
+		// 	});
+		// },
 		/////////////////////////////////////////Table Personalization////////////////////////////////
 		onColumnSelection: function (event) {
 			var that = this;

@@ -68,7 +68,7 @@
                     <Button icon="sap-icon://action-settings" id="CreateButton" type="Emphasized" press="onColumnSelection" tooltip="Settings"/>
                 </OverflowToolbar>
 				<ScrollContainer horizontal="true">
-					<Table id="TableDataId" itemPress="onItempress" items="{path:'DataModel>/results'}" mode="SingleSelectMaster"
+					<Table id="TableDataId" items="{path:'DataModel>/results'}" mode="SingleSelectMaster"
 						sticky="ColumnHeaders">
 						<columns>
 							<Column id="poNumber_col" minScreenWidth="Tablet" demandPopin="true" width="10rem">
