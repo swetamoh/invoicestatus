@@ -8,7 +8,7 @@ module.exports = (srv) => {
     srv.on('READ', GetPendingInvoiceList, async (req) => {
         const params = req._queryOptions;
         const results = await getPendingInvoiceList(params);
-        if (!results) throw new Error('Unable to fetch Pending Invoice List.');
+        if (results.error) req.reject(500, results.error);
         return results
 
     });
@@ -37,11 +37,12 @@ async function getPendingInvoiceList(params) {
         if (response.data && response.data.d) {
             return JSON.parse(response.data.d);
         } else {
-            console.error('Error parsing response:', response.data);
-            throw new Error('Error parsing the response from the API.');
+            return {
+                error: response.data.ErrorDescription
+            }
         }
     } catch (error) {
         console.error('Error in get Pending Invoice List API call:', error);
-        throw new Error('Unable to fetch Pending Invoice List.');
+        throw new Error(error);
     }
 }

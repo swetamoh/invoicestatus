@@ -177,7 +177,7 @@ sap.ui.define([
 				},
 				error: function (oError) {
 					sap.ui.core.BusyIndicator.hide();
-					// var value = JSON.parse(oError.response.body);
+					var value = JSON.parse(oError.response.body);
 					// MessageBox.error(value.error.message.value);
 					//MessageBox.error(oError.message);
 				}
