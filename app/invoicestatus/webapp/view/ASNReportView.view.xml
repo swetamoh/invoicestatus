@@ -39,7 +39,7 @@
 							</fb:FilterItem>
 							<fb:FilterItem name="G" label="Plant" mandatory="true">
 								<fb:control>
-									<Input id="PlantId" value="{localModel>/Plant}" enabled="false"/>
+									<Input id="PlantId" value="{localModel>/Plant}"/>
 								</fb:control>
 							</fb:FilterItem>
 							
