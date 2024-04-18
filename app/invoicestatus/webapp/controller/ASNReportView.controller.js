@@ -35,8 +35,8 @@ sap.ui.define([
 			//this.getView().byId("startDateId").setValue(this.curDate);
 			//this.searhFilters = this.statusFilters = [];
 			var that = this;
-			this.unitCode = sessionStorage.getItem("unitCode") || "P01";
-			this.getView().byId("PlantId").setValue(this.unitCode);
+			//this.unitCode = sessionStorage.getItem("unitCode") || "P01";
+			//this.getView().byId("PlantId").setValue(this.unitCode);
 			this.getView().byId("InvStatusId").setSelectedKey("PENDING FOR BILL PASSING");
 			this.InvStatus = this.getView().byId("InvStatusId").getSelectedKey();
 			var oModel = this.getOwnerComponent().getModel();
@@ -115,6 +115,11 @@ sap.ui.define([
 				MessageBox.error("Please enter MRN end date");
 				return;
 			}
+			if(!data.Plant){
+				sap.ui.core.BusyIndicator.hide();
+				MessageBox.error("Please select Plant");
+				return;
+			}
 			this.POEndDate = this.getView().byId("poendDateId").getDateValue();
 			this.POStartDate = this.getView().byId("postartDateId").getDateValue();
 			if(this.POEndDate){
@@ -141,11 +146,11 @@ sap.ui.define([
 			if(!data.MRNNumber){
 				data.MRNNumber = "";
 			}
-			if(!data.Plant){
-				this.Plant = this.unitCode;
-			}else if(data.Plant){
-				this.Plant = data.Plant;
-			}
+			// if(!data.Plant){
+			// 	this.Plant = this.unitCode;
+			// }else if(data.Plant){
+			// 	this.Plant = data.Plant;
+			// }
 			if(!data.POStartDate){
 				this.POStartDate = "";
 			}
@@ -161,7 +166,7 @@ sap.ui.define([
 			
 			oModel.read("/GetPendingInvoiceList" ,{
 				urlParameters: {
-					UnitCode: this.Plant,
+					UnitCode: data.Plant,
 					PoNum: data.PONum,
 					MrnNumber: data.MRNNumber,
 					FromPOdate: this.POStartDate,
