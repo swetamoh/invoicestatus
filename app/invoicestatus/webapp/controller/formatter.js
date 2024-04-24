@@ -2,7 +2,7 @@ jQuery.sap.declare("sp.fiori.invoicestatus.controller.formatter");
 sp.fiori.invoicestatus.controller.formatter = {
 	formatDate: function (oDate) {
 		if (oDate && oDate !== "00000000") {
-			//var date = oDate.substring(4, 6) + "/" + oDate.substring(6, 8) + "/" + oDate.substring(0, 4);
+			var date = oDate.substring(4, 6) + "/" + oDate.substring(6, 8) + "/" + oDate.substring(0, 4);
 			return sap.ui.core.format.DateFormat.getDateInstance({
 				pattern: "MMM dd, yyyy"
 			}).format(new Date(oDate));

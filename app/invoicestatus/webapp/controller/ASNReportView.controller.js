@@ -187,16 +187,50 @@ sap.ui.define([
 					sap.ui.core.BusyIndicator.hide();
 					that.DataModel.setData(oData);
 					that.DataModel.refresh();
+					var oDataModel = that.getView().getModel("DataModel").getData();
+						for (var i = 0; i < oDataModel.results.length; i++) {
+							oDataModel.results[i].ShortQuantity = parseFloat(oDataModel.results[i].ASNQuantity) - parseFloat(oDataModel.results[i].MRNQuantity);
+						}
+					that.DataModel.refresh(true);
+					that.getInvoiceNum();
 				},
-				error: function (oError) {
+				error: function (error) {
 					sap.ui.core.BusyIndicator.hide();
-					var value = JSON.parse(oError.response.body);
-					// MessageBox.error(value.error.message.value);
-					//MessageBox.error(oError.message);
+					sap.ui.core.BusyIndicator.hide();
+					if(error.response.body === "Gateway Timeout"){
+						MessageBox.error(error.response.body);
+					}else{
+					var errormsg = JSON.parse(error.response.body)
+					MessageBox.error(errormsg.error.message.value);
+				}
 				}
 			});
 		},
 
+		getInvoiceNum: function(){
+			var that = this;
+			var oModel = this.getView().getModel("catalog1");
+			oModel.read("/ASNListHeader", {
+				success: function (oData) {
+					var data = that.DataModel.getData();
+					for(var i=0;i<oData.results.length;i++) {
+						for(var j=0;j<data.results.length;j++) {
+						if(oData.results[i].PNum_PoNum === data.results[j].PONumber.replace(/\//g, '-'))
+							data.results[j].BillNumber = oData.results[i].BillNumber;
+							data.results[j].BillDate = oData.results[i].BillDate.substring(4, 6) + "/" + oData.results[i].BillDate.substring(6, 8) + "/" + oData.results[i].BillDate.substring(0, 4);
+						}
+					}
+					that.DataModel.setData(data);
+					that.DataModel.refresh();
+					
+				},
+				error: function (oError) {
+					console.log("Error: "+ oError)
+				}
+			});
+		},
+
+		
 		// onItempress: function (oEvent) {
 		// 	var data = oEvent.getParameter("listItem").getBindingContext("DataModel").getProperty();
 		// 	//this.detailModel.setData(data);
