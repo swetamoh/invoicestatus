@@ -3,6 +3,9 @@ namespace my.invoicestatus;
 entity GetPendingInvoiceList {
   key PONumber                    : String;
       PODate                      : String;
+      BillDate                    : String;
+      BillNumber                  : String;
+      ASNNumber                   : String;
       VendorCode                  : String;
       VendorName                  : String;
       PlantCode                   : String;
@@ -28,4 +31,5 @@ entity GetPendingInvoiceList {
       AccCode                     : String;
       AccDesc                     : String;
       ReceiptDate                 : String;
+      ShortQuantity               : String;
 }

@@ -191,145 +191,68 @@
                     sticky="ColumnHeaders"
                 >
                     <columns>
-                        <Column
-                            id="poNumber_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="10rem"
-                        >
-                            <Text text="PO Number" />
-                        </Column>
-                        <Column
-                            id="poDate_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="PO Date" />
-                        </Column>
-                        <Column
-                            id="invoiceStatus_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="Invoice Status" />
-                        </Column>
-                        <Column
-                            id="vendorCode_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="Vendor Code" />
-                        </Column>
-                        <Column
-                            id="vendorName_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="10rem"
-                        >
-                            <Text text="Vendor Name" />
-                        </Column>
-                        <Column
-                            id="plantCode_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="Plant" />
-                        </Column>
-                        <Column
-                            id="poTotAmt_col"
-                            width="10rem"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                        >
-                            <Text
-                                text="PO Total Amount ({DataModel>/results/0/MRNCurrency})"
-                            />
-                        </Column>
-                        <Column
-                            id="poTotQty_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="PO Total Qty " />
-                        </Column>
-                        <Column
-                            id="mrnNumber_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="10rem"
-                        >
-                            <Text text="MRN Number" />
-                        </Column>
-                        <Column
-                            id="mrnDate_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="MRN Date" />
-                        </Column>
-                        <Column
-                            id="mrnQty_col"
-                            width="6rem"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                        >
-                            <Text text="MRN Qty" />
-                        </Column>
-                        <Column
-                            id="mrnQtyRcvd_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="MRN Qty Rcvd" />
-                        </Column>
-                        <Column
-                            id="mrnQtyRej_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="MRN Qty Rejected" />
-                        </Column>
-                        <Column
-                            id="mrnQtyLoc_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="MRN Qty Rcvd Loc." />
-                        </Column>
-                        <Column
-                            id="asnQty_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="7rem"
-                        >
-                            <Text text="ASN Qty" />
-                        </Column>
-                        <Column
-                            id="vchNum_col"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="9rem"
-                        >
-                            <Text text="Voucher Number" />
-                        </Column>
-                        <Column
-                            id="vchType_col"
-                            visible="false"
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                            width="8rem"
-                        >
-                            <Text text="Voucher Type" />
-                        </Column>
+                       <Column id="poNumber_col" minScreenWidth="Tablet" demandPopin="true" width="10rem">
+								<Text text="PO Number"/>
+							</Column>
+							<Column id="poDate_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="PO Date"/>
+							</Column>
+							<Column id="invNumber_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="Invoice Number"/>
+							</Column>
+							<Column id="invDate_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="Invoice Date"/>
+							</Column>
+							<Column id="vendorCode_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="Vendor Code"/>
+							</Column>
+							<Column id="vendorName_col" minScreenWidth="Tablet" demandPopin="true" width="10rem">
+								<Text text="Vendor Name"/>
+							</Column>
+							<Column id="plantCode_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="Plant"/>
+							</Column>
+							<Column id="poTotAmt_col" width="10rem" minScreenWidth="Tablet" demandPopin="true">
+								<Text text="PO Total Amount ({DataModel>/results/0/MRNCurrency})"/>
+							</Column>
+							<Column id="poTotQty_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="PO Total Qty "/>
+							</Column>
+							<Column id="mrnNumber_col" minScreenWidth="Tablet" demandPopin="true" width="10rem">
+								<Text text="MRN Number"/>
+							</Column>
+							<Column id="mrnDate_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="MRN Date"/>
+							</Column>
+							<Column id="asnQty_col" minScreenWidth="Tablet" demandPopin="true" width="7rem">
+								<Text text="ASN/Invoice Qty"/>
+							</Column>
+							<Column id="mrnQty_col" width="6rem" minScreenWidth="Tablet" demandPopin="true">
+								<Text text="MRN Qty"/>
+							</Column>
+							<Column id="shortQty_col" width="6rem" minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Short Qty"/>
+							</Column>
+							<Column id="mrnQtyRej_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="MRN Rejected Qty"/>
+							</Column>
+							<Column id="mrnQtyRcvd_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="Accepted Qty"/>
+							</Column>
+							<Column id="mrnQtyLoc_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="MRN Qty Rcvd Loc."/>
+							</Column>
+							<Column id="asnNumber_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="ASN Number"/>
+							</Column>
+							<Column id="vchNum_col" minScreenWidth="Tablet" demandPopin="true" width="9rem">
+								<Text text="Voucher Number"/>
+							</Column>
+							<Column id="vchType_col" visible="false" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="Voucher Type"/>
+							</Column><Column id="invoiceStatus_col" minScreenWidth="Tablet" demandPopin="true" width="8rem">
+								<Text text="Invoice Status"/>
+							</Column>
                     </columns>
                     <items>
                         <ColumnListItem
@@ -337,76 +260,28 @@
                             type="Navigation"
                         >
                             <cells>
-                                <Text
-                                    id="poNumber"
-                                    text="{DataModel>PONumber}"
-                                />
-                                <Text
-                                    id="poDate"
-                                    text="{path:'DataModel>PODate', formatter:'sp.fiori.invoicestatus.controller.formatter.formatDate'}"
-                                />
-                                <ObjectStatus
-                                    id="invoiceStatus"
-                                    text="{DataModel>InvoiceStatus}"
-                                    state="{=${DataModel>InvoiceStatus} === 'Completed' ? 'Success' : 'Error' }"
-                                />
-                                <Text
-                                    id="vendorCode"
-                                    text="{DataModel>VendorCode}"
-                                />
-                                <Text
-                                    id="vendorName"
-                                    text="{DataModel>VendorName}"
-                                />
-                                <Text
-                                    id="plantCode"
-                                    text="{DataModel>PlantName} ({DataModel>PlantCode})"
-                                />
-                                <Text
-                                    id="poTotAmt"
-                                    text="{path:'DataModel>POTotalAmount',formatter:'sp.fiori.invoicestatus.controller.formatter.formatAmount'}"
-                                />
-                                <Text
-                                    id="poTotQty"
-                                    text="{DataModel>POTotalQuantity}"
-                                />
-                                <Text
-                                    id="mrnNumber"
-                                    text="{DataModel>MRNNumber}"
-                                />
-                                <Text
-                                    id="mrnDate"
-                                    text="{path:'DataModel>MRNDate', formatter:'sp.fiori.invoicestatus.controller.formatter.formatDate'}"
-                                />
-                                <Text
-                                    id="mrnQty"
-                                    text="{DataModel>MRNQuantity}"
-                                />
-                                <Text
-                                    id="mrnQtyRcvd"
-                                    text="{DataModel>MRNQuantityReceived}"
-                                />
-                                <Text
-                                    id="mrnQtyRej"
-                                    text="{DataModel>MRNQuantityRejected}"
-                                />
-                                <!-- text="{DataModel>MRNQuantityReceived}"/> -->
-                                <Text
-                                    id="mrnQtyLoc"
-                                    text="{DataModel>MRNQuantityReceivedLocation}"
-                                />
-                                <Text
-                                    id="asnQty"
-                                    text="{DataModel>ASNQuantity}"
-                                />
-                                <Text
-                                    id="vchNum"
-                                    text="{DataModel>VoucherNumber}"
-                                />
-                                <Text
-                                    id="vchType"
-                                    text="{DataModel>VoucherType}"
-                                />
+                                <Text id="poNumber" text="{DataModel>PONumber}"/>
+									<Text id="poDate" text="{DataModel>PODate}"></Text>
+									<Text id="invNumber" text="{DataModel>BillNumber}"/>
+									<Text id="invDate" text="{DataModel>BillDate}"></Text>
+									<Text id="vendorCode" text="{DataModel>VendorCode}"/>
+									<Text id="vendorName" text="{DataModel>VendorName}"/>
+									<Text id="plantCode" text="{DataModel>PlantName} ({DataModel>PlantCode})"></Text>
+									<Text id="poTotAmt" text="{path:'DataModel>POTotalAmount',formatter:'sap.fiori.invoicecreation.controller.formatter.formatAmount'}"/>
+									<Text id="poTotQty" text="{DataModel>POTotalQuantity}"/>
+									<Text id="mrnNumber" text="{DataModel>MRNNumber}"/>
+									<Text id="mrnDate" text="{DataModel>MRNDate}"></Text>
+									<Text id="asnQty" text="{DataModel>ASNQuantity}"/>
+									<Text id="mrnQty" text="{DataModel>MRNQuantity}"/>
+									<Text id="shortQty" text="{DataModel>ShortQuantity}"/>
+									<Text id="mrnQtyRej" text="{DataModel>MRNQuantityRejected}"/>
+									<Text id="mrnQtyRcvd" text="{DataModel>MRNQuantityReceived}"/>
+									<Text id="mrnQtyLoc" text="{DataModel>MRNQuantityReceivedLocation}"/>
+									<Text id="asnNumber" text="{DataModel>ASNNumber}"/>
+									<Text id="vchNum" text="{DataModel>VoucherNumber}"/>
+									<Text id="vchType" text="{DataModel>VoucherType}"/>
+									<ObjectStatus id="invoiceStatus" text="{DataModel>InvoiceStatus}" state="{=${DataModel>InvoiceStatus} === 'VOUCHER POSTING DONE' ? 'Success' : 'Error' }"></ObjectStatus>
+									
                             </cells>
                         </ColumnListItem>
                     </items>
